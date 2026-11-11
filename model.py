@@ -18,8 +18,16 @@ def tokenize(text: str) -> list:
     # TODO: Split cleaned text on whitespace into non-empty word tokens
     return text.split()
 
-# Step 3 - tokenize_corpus (not yet solved)
-# TODO: implement
+# Step 3 - tokenize_corpus
+def tokenize_corpus(texts: list) -> list:
+    # TODO: Apply clean_text and tokenize to every document so the full corpus becomes a list of token lists.
+    res =[]
+    for text in texts:
+        text = clean_text(text)
+        text = tokenize(text)
+        res.append(text)
+    
+    return res
 
 # Step 4 - split_train_val_test_indices (not yet solved)
 # TODO: implement
