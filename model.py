@@ -65,6 +65,7 @@ def build_vocabulary(word_counts: dict, max_size: int) -> dict:
     return res
 
 # Step 7 - tokens_to_bow
+import numpy as np
 def tokens_to_bow(tokens: list, vocab: dict) -> np.ndarray:
     # TODO: Convert one document's token list into a bag-of-words count vector...
     import numpy as np
@@ -223,7 +224,7 @@ def confusion_counts(y_true: np.ndarray, y_pred: np.ndarray) -> tuple:
 # Step 22 - metrics_from_counts
 def metrics_from_counts(tp: int, fp: int, tn: int, fn: int) -> dict:
     # TODO: Derive precision, recall, F1, and accuracy from confusion counts...
-    import numpy as np
+    # import numpy as np
     if fp+tp ==0:
         precision =0.0
     else:
