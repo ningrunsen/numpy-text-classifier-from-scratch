@@ -249,8 +249,25 @@ def metrics_from_counts(tp: int, fp: int, tn: int, fn: int) -> dict:
         'accuracy':accuracy
     }
 
-# Step 23 - tune_decision_threshold (not yet solved)
-# TODO: implement
+# Step 23 - tune_decision_threshold
+def tune_decision_threshold(y_true: np.ndarray, proba: np.ndarray, thresholds: np.ndarray = None) -> tuple:
+    # TODO: Find the decision threshold that maximizes F1 on validation data.
+    
+
+    best_threshold = None
+    best_f1 = -1
+    if  thresholds is None:
+        thresholds = np.linspace(0,1,101)
+    for thresh in thresholds:
+        y_pred = predict_labels(proba,thresh)
+        tp,fp,tn,fn = confusion_counts(y_true,y_pred)
+        metrics = metrics_from_counts(tp,fp,tn,fn)
+        f1 = metrics['f1']
+        if f1>best_f1:
+            best_f1 = f1
+            best_threshold=thresh
+    
+    return (best_threshold,best_f1)
 
 # Step 24 - evaluate_predictions (not yet solved)
 # TODO: implement
